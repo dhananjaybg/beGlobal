@@ -1,0 +1,54 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="beGlobal.js" ></script>
+
+<script>	
+
+	function ButtonTranslate(){
+
+		//the the params here
+		beGlobal.setUp({
+			apikey: '5GgitIBsBgbRlXXgPK%2BzEw%3D%3D',
+			bgurl: 'https://api.beglobal.com/translate',
+			src_text: $.trim( $("#inp_src").val()),
+			src_lang: 'eng',
+			dest_lang: 'fra'
+		});
+
+		//get the  response here
+		beGlobal.bgtranslate(function(data){			
+    		//data should contain the object fetched by ajax
+    		$('#out_src').val( '' );				    		
+    		$('#out_src').val( data );				
+    		console.log(" >>>> " + data );
+
+		});
+
+		console.log('used this api key: '+ beGlobal.getapikey());
+		console.log('used this url: '+ beGlobal.getapiurl());
+
+	}
+</script>
+
+	<head>
+		<title>My Little Test Page</title>
+	</head>
+	<body>
+
+		<h1>BeGlobal Traslation Page.</h1>
+			<div align="center">		
+				<br><br>
+				<textarea id="inp_src" cols="40" rows="5" name="myname">
+					Now we are inside the area - Content to be translated!
+				</textarea>
+				<br><br>
+
+				<button type="button" onclick="ButtonTranslate()">Translate</button>
+
+				<br><br>
+				<textarea id="out_src" cols="40" rows="5" name="myname">
+					......
+				</textarea>
+			</div>
+	</body>
+</html>
